@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kutaycelebi.github.io/sitemap.xml 
+Sitemap: https://kutaycelebi.com/sitemap.xml 
