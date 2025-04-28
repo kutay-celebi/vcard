@@ -6,12 +6,6 @@ set -e
 # build
 npm run build
 
-# navigate into the build output directory
-cd dist
-
-# if you are deploying to a custom domain
-# echo 'www.example.com' > CNAME
-
 # Configure Git user information
 git config user.email "mail@kutaycelebi.com"
 git config user.name "Kutay Çelebi"
