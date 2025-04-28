@@ -13,15 +13,14 @@
                   src="https://media-exp1.licdn.com/dms/image/C4D03AQESnalTmC_EWw/profile-displayphoto-shrink_200_200/0/1602248178097?e=1649289600&amp;v=beta&amp;t=ewqdWsqR1Dm2sYbf-i1ObgAcWXpoqfrj0JBsTnUoANM"
                   height="200"
                   alt="Kutay Çelebi"
-                  id="ember278"
                   class="ember-view profile-photo-edit__preview">
             </button>
           </div>
         </div>
       </div>
       <div class="contents front">
-        <p>{{ frontName | uppercase }}</p>
-        <p class="bottom-bar">{{ frontSurname | uppercase }}</p>
+        <p>{{ uppercase(frontName) }}</p>
+        <p class="bottom-bar">{{ uppercase(frontSurname) }}</p>
         <span>Software Developer</span>
       </div>
     </div>
@@ -30,11 +29,11 @@
       <div class="contents back">
         <div style="fill: white">
         </div>
-        <h2>{{ backTitle | uppercase }}</h2>
+        <h2>{{ uppercase(backTitle) }}</h2>
         <span>Follow Me</span>
         <div class="icons">
           <a v-for="link in links" :key="link.url" :href="link.url" style="margin-left: 1rem; margin-right: 1rem">
-            <component :is="link.logo" style="fill: white"/>
+            <component :is="link.logo" class="icon" />
           </a>
         </div>
       </div>
@@ -43,43 +42,32 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
+import GithubIcon from '@/assets/github-line.svg'
+import MailIcon from '@/assets/mail-line.svg'
+import LinkedinIcon from '@/assets/linkedin-box-line.svg'
 
-import GithubIcon from '@/assets/github-line.svg';
-import MailIcon from '@/assets/mail-line.svg';
-import LinkedinIcon from '@/assets/linkedin-box-line.svg';
+const links = [
+  {
+    url: 'https://github.com/kutay-celebi',
+    logo: GithubIcon,
+  },
+  {
+    url: 'mailto:kutay.celebi@gmail.com',
+    logo: MailIcon,
+  },
+  {
+    url: 'https://www.linkedin.com/in/kutay-celebi/',
+    logo: LinkedinIcon,
+  },
+]
 
-export default {
-  name: 'Card',
-  // Data
-  data() {
-    return {
-      links: [
-        {
-          url: 'https://github.com/kutay-celebi',
-          logo: GithubIcon,
-        },
-        {
-          url: 'mailto:mail@kutaycelebi.com',
-          logo: MailIcon,
-        },
-        {
-          url: 'https://www.linkedin.com/in/celebikutay/',
-          logo: LinkedinIcon,
-        },
-      ],
-      frontName: 'Kutay',
-      frontSurname: 'Çelebi',
-      backTitle: 'Contact Me',
-    };
-  },
-  // Filters
-  filters: {
-    uppercase(text) {
-      return text.toUpperCase();
-    },
-  },
-};
+const frontName = ref('Kutay')
+const frontSurname = ref('Çelebi')
+const backTitle = ref('Contact Me')
+
+const uppercase = (text) => text.toUpperCase()
 </script>
 
 <style lang="scss" scoped>
@@ -112,16 +100,10 @@ export default {
   .icons {
     margin: 10px 0;
 
-    i {
-      color: #042f4b;
-      background: white;
-      font-size: 20px;
-      height: 40px;
-      width: 40px;
-      border-radius: 50%;
-      line-height: 40px;
-      margin: 0 5px;
-      cursor: pointer;
+    .icon {
+      fill: white;
+      width: 24px;
+      height: 24px;
     }
   }
 
