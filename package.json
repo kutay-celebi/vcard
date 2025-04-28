@@ -3,11 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "homepage": "https://kutay.celebi.github.io/vcard",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kutay-celebi/vcard.git"
-  },
+  "homepage": "https://kutaycelebi.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
